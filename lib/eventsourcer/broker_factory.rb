@@ -1,19 +1,13 @@
 module Eventsourcer
   class BrokerFactory
     def self.build
-      case broker
-      when :kafka
+      raise Eventsourcer::Errors::BrokerNotConfiguredError unless Eventsourcer.configuration
+      configured_broker = Eventsourcer.configuration.broker
+      if configured_broker == :kafka
         return Eventsourcer::Brokers::KafkaBroker
+      else
+        raise Eventsourcer::Errors::BrokerNotFound
       end
-      raise Eventsourcer::Errors::BrokerNotFound
-    end
-
-    private
-
-    def self.broker
-      raise Eventsourcer::Errors::BrokerNotConfiguredError unless Eventsourcer.configuration 
-      config_broker = Eventsourcer.configuration.broker
-      return config_broker.to_s.to_sym
     end
   end
 end
