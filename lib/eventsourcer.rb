@@ -1,7 +1,6 @@
 require 'eventsourcer/version'
 require 'eventsourcer/broker_factory'
-require 'eventsourcer/errors/base'
-require 'eventsourcer/errors/broker_not_configured_error'
+require 'eventsourcer/errors'
 require 'eventsourcer/brokers/base'
 require 'eventsourcer/brokers/kafka_broker'
 
