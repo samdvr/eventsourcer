@@ -1,8 +1,6 @@
 # Eventsourcer
 
-Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/eventsourcer`. To experiment with that code, run `bin/console` for an interactive prompt.
-
-TODO: Delete this and the text above, and describe your gem
+A helper library for event sourcing Rails ActiveRecord model changes to Kafka(more brokers coming soon).
 
 ## Installation
 
@@ -16,13 +14,25 @@ And then execute:
 
     $ bundle
 
-Or install it yourself as:
-
-    $ gem install eventsourcer
-
 ## Usage
 
-TODO: Write usage instructions here
+In initializer configure Eventsourcer:
+```ruby
+  Eventsourcer.configure do |config|
+    config.broker = :kafka #required
+    config.kafka_seed_brokers = ["localhost:9092"] #optional
+    config.kafka_max_queue_size = 10000 #optional
+  end
+```
+
+Add Eventsourcer to a model you would like to track:
+```ruby
+  require "eventsourcer"
+  class User < ApplicationRecord
+    include Eventsourcer
+  end
+```
+
 
 ## Development
 
