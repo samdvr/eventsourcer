@@ -2,7 +2,10 @@ module Eventsourcer
   class BrokerFactory
     def self.build
       raise Eventsourcer::Errors::BrokerNotConfiguredError unless Eventsourcer.configuration
-      configured_broker = Eventsourcer.configuration.broker
+      return fetch_broker_klass(Eventsourcer.configuration.broker)
+    end
+
+    def self.fetch_broker_klass(configured_broker)
       if configured_broker == :kafka
         return Eventsourcer::Brokers::KafkaBroker
       else
@@ -10,4 +13,5 @@ module Eventsourcer
       end
     end
   end
+
 end
