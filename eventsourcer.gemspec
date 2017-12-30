@@ -9,7 +9,7 @@ Gem::Specification.new do |spec|
 
   spec.summary       = %q{Library to event source ActiveRecord changes to a broker.}
   spec.description   = %q{This library publishes tracked ActiveRecord changes to a persistence layer such as Apache Kafka.}
-  spec.homepage      = "http://github.com/samdvr/"
+  spec.homepage      = "https://github.com/samdvr/eventsourcer"
   spec.license       = "MIT"
 
   # Prevent pushing this gem to RubyGems.org. To allow pushes either set the 'allowed_push_host'
