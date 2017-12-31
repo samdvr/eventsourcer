@@ -42,7 +42,7 @@ For example
     include Eventsourcer
   end
 ```
-will publish messages to ```users`` topic.
+will publish messages to "users" topic.
 
 ## Development
 
