@@ -33,6 +33,16 @@ Add Eventsourcer to a model you would like to track:
   end
 ```
 
+## Kafka Broker
+Events generated for Kafka are published to ActiveRecord model's table name topic.
+For example
+```ruby
+  require "eventsourcer"
+  class User < ApplicationRecord
+    include Eventsourcer
+  end
+```
+will publish messages to 'users' topic.
 
 ## Development
 
