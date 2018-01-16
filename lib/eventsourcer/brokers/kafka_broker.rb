@@ -23,8 +23,7 @@ module Eventsourcer
       private
 
       def self.produce_to_kafka(producer, table_name, previous_changes_json)
-        producer.produce(previous_changes_json,
-                 topic: table_name)
+        producer.produce(previous_changes_json, topic: table_name)
       end
 
       def self.client
