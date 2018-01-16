@@ -53,8 +53,7 @@ RSpec.describe Eventsourcer::Brokers::KafkaBroker do
   describe ".produce_to_kafka" do
     it "enqueues messages to kafka queue" do
       Eventsourcer.configure { }
-      allow(SecureRandom).to receive(:uuid).and_return("881791e3-969a-4699-9c67-5fcdb756ece3")
-      expect(producer).to receive(:produce).with({}, topic: "table_name", key: "881791e3-969a-4699-9c67-5fcdb756ece3")
+      expect(producer).to receive(:produce).with({}, topic: "table_name")
       described_class.send(:produce_to_kafka, producer, "table_name", {})
     end
   end
