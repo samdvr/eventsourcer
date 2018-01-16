@@ -24,8 +24,7 @@ module Eventsourcer
 
       def self.produce_to_kafka(producer, table_name, previous_changes_json)
         producer.produce(previous_changes_json,
-                 topic: table_name,
-                 key: SecureRandom.uuid)
+                 topic: table_name)
       end
 
       def self.client
